@@ -44,9 +44,8 @@ export default function EmergenciaInundacionesHome() {
   const statsContainerRef = useRef<HTMLDivElement | null>(null);
   const donationSectionRef = useRef<HTMLElement | null>(null);
 
-  // State for client-side rendering of video
+  // State for client-side rendering
   const [isBrowser, setIsBrowser] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Imágenes de emergencia para el carrusel
@@ -239,11 +238,6 @@ export default function EmergenciaInundacionesHome() {
     };
   }, [isBrowser]);
 
-  // Toggle mute/unmute
-  const toggleMute = () => {
-    // Función conservada para compatibilidad
-  };
-
   return (
     <main>
       {/* Hero Section - Emergencia */}
@@ -251,14 +245,14 @@ export default function EmergenciaInundacionesHome() {
         {isBrowser && (
           <div ref={heroImageRef} className="absolute inset-0 z-0 overflow-hidden">
             <div className="relative w-full h-full">
-              <video
-                src="/video1.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
+              {/* Imagen de fondo principal */}
+              <div 
+                className="w-full h-full bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url('/imagen3.jpg')`
+                }}
               />
+              
               <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/70 to-transparent" />
               <div className="absolute inset-0 bg-black/30" />
               
@@ -309,10 +303,10 @@ export default function EmergenciaInundacionesHome() {
               ref={titleRef}
               className="font-heading text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6 text-white drop-shadow-2xl"
             >
-              CAMAGUÁN EN{' '}
               <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent animate-pulse">
                 EMERGENCIA
-              </span>
+              </span>{' '}
+              EN LOS ESTADOS GUÁRICO, APURE Y AMAZONAS
             </h1>
 
             <motion.p
@@ -323,8 +317,9 @@ export default function EmergenciaInundacionesHome() {
             >
               Las inundaciones han afectado a más de{' '}
               <span className="font-bold text-yellow-400 animate-pulse">19,000 familias</span> en 
-              Camaguán, Estado Guárico. Con más de{' '}
-              <span className="font-bold text-yellow-400 animate-pulse">40 refugios ocupados</span>, 
+              múltiples municipios: Camaguán (Estado Guárico), San Fernando de Apure (Estado Apure), 
+              y Puerto Ayacucho y San Fernando de Atabapo (Estado Amazonas). Con más de{' '}
+              <span className="font-bold text-yellow-400 animate-pulse">60 refugios ocupados</span>, 
               necesitamos tu ayuda urgente.
             </motion.p>
 
@@ -368,13 +363,13 @@ export default function EmergenciaInundacionesHome() {
                   <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
                 </div>
                 <div>
-                  <p className="text-white font-bold text-lg tracking-wide">MIVELLACEN</p>
-                  <p className="text-white/90 text-sm">Misión Venezolana de los Llanos Centrales</p>
+                  <p className="text-white font-bold text-lg tracking-wide">MISION VENEZOLANA DE LOS LLANOS CENTRALES</p>
+                  <p className="text-white/90 text-sm">MIVELLACEN</p>
                 </div>
               </div>
               
               {/* Logo del proyecto */}
-              <div className="flex items-center justify-center pt-4 border-t border-white/20">
+              {/* <div className="flex items-center justify-center pt-4 border-t border-white/20">
                 <div className="flex items-center space-x-3">
                   <Image
                     src="/logo.png"
@@ -388,7 +383,7 @@ export default function EmergenciaInundacionesHome() {
                     <p className="text-white/70 text-xs">Ayuda Humanitaria</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </motion.div>
           </div>
         </div>
@@ -430,9 +425,10 @@ export default function EmergenciaInundacionesHome() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="font-body text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
             >
-              Las fuertes lluvias han causado inundaciones devastadoras en los estados de 
-              Camagüán, Apure y Amazonas, dejando a miles de familias sin hogar y necesitando 
-              asistencia urgente.
+              Las fuertes lluvias han causado inundaciones devastadoras en múltiples municipios: 
+              Camaguán (Estado Guárico), San Fernando de Apure (Estado Apure), Puerto Ayacucho 
+              y San Fernando de Atabapo (Estado Amazonas), dejando a miles de familias sin hogar 
+              y necesitando asistencia urgente.
             </motion.p>
           </div>
 
@@ -466,7 +462,7 @@ export default function EmergenciaInundacionesHome() {
                   </div>
                   <div>
                     <h3 className="font-heading text-2xl md:text-3xl text-gray-900 mb-2">Refugios Activos</h3>
-                    <p className="text-orange-600 font-bold text-4xl md:text-5xl tracking-wider">+40</p>
+                    <p className="text-orange-600 font-bold text-4xl md:text-5xl tracking-wider">+60</p>
                   </div>
                 </div>
                 <p className="text-gray-600 leading-relaxed">
@@ -491,7 +487,8 @@ export default function EmergenciaInundacionesHome() {
                   </div>
                 </div>
                 <p className="text-gray-600 leading-relaxed">
-                  Camagüán, Apure y Amazonas enfrentan la mayor crisis por inundaciones.
+                  Municipios afectados: Camaguán (Guárico), San Fernando de Apure (Apure), 
+                  Puerto Ayacucho y San Fernando de Atabapo (Amazonas).
                 </p>
                 <div className="mt-4 bg-blue-50 p-3 rounded-lg">
                   <div className="flex items-center space-x-2">
@@ -665,6 +662,151 @@ export default function EmergenciaInundacionesHome() {
         <div className="absolute bottom-20 right-10 w-20 h-20 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-xl animate-pulse"></div>
       </section>
 
+      {/* Videos de Damnificaciones */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 relative overflow-hidden">
+        {/* Patrón de fondo */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-red-600/20"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="font-heading text-4xl md:text-5xl text-white mb-6 relative"
+            >
+              <span className="relative z-10">Testimonios de la Emergencia</span>
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"></div>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+            >
+              Videos que documentan la realidad de las familias afectadas por las inundaciones. 
+              Haz clic en cualquier video para reproducirlo.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { 
+                src: "/videodamnificaciones1.mp4", 
+                // title: "Familias Damnificadas - Testimonio 1",
+                // description: "Situación actual de las familias afectadas"
+              },
+              { 
+                src: "/videodamnificaciones2.mp4", 
+                // title: "Familias Damnificadas - Testimonio 2",
+                // description: "Necesidades urgentes de los refugiados"
+              },
+              { 
+                src: "/videodamnificaciones3.mp4", 
+                // title: "Familias Damnificadas - Testimonio 3",
+                // description: "Condiciones en los refugios temporales"
+              },
+              { 
+                src: "/videodamnificaciones4.mp4", 
+                // title: "Familias Damnificadas - Testimonio 4",
+                // description: "Llamado urgente de ayuda humanitaria"
+              },
+              { 
+                src: "/videodamnificaciones5.mp4", 
+                // title: "Familias Damnificadas - Testimonio 4",
+                // description: "Llamado urgente de ayuda humanitaria"
+              }
+            ].map((video, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-white/20 group hover:scale-105"
+              >
+                <div className="relative aspect-[9/16] overflow-hidden">
+                  <video
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    preload="metadata"
+                    controls
+                    playsInline
+                    poster={`${video.src}#t=0.1`}
+                  >
+                    <source src={video.src} type="video/mp4" />
+                    Tu navegador no soporta el elemento video.
+                  </video>
+                  
+                  {/* Badge de urgencia */}
+                  <div className="absolute top-3 right-3 bg-red-600/90 backdrop-blur-sm text-white px-3 py-1 rounded-full shadow-lg">
+                    <span className="text-xs font-bold tracking-wide">URGENTE</span>
+                  </div>
+
+                  {/* Efecto de brillo */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000"></div>
+                </div>
+
+                {/* Información base siempre visible */}
+                <div className="p-4 bg-gradient-to-br from-gray-800/50 to-gray-900/50">
+                  {/* <h3 className="font-semibold text-white text-sm mb-2 truncate">{video.title}</h3>
+                  <p className="text-white/80 text-xs leading-relaxed">{video.description}</p> */}
+                  
+                  <div className="flex items-center justify-between mt-3">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                      <span className="text-green-400 text-xs font-semibold">Video disponible</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <div className="w-1 h-1 bg-white/40 rounded-full"></div>
+                      <div className="w-1 h-1 bg-white/30 rounded-full"></div>
+                      <div className="w-1 h-1 bg-white/20 rounded-full"></div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Mensaje de sensibilización */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-center mt-16"
+          >
+            <div className="bg-red-500/20 border border-red-400 rounded-xl p-8 max-w-4xl mx-auto backdrop-blur-sm">
+              <div className="flex items-center justify-center space-x-3 mb-4">
+                <AlertTriangle className="w-8 h-8 text-red-400" />
+                <h3 className="font-heading text-2xl text-white">Testimonios Reales</h3>
+              </div>
+              <p className="text-white/90 text-lg leading-relaxed mb-4">
+                Estos videos muestran la realidad que viven miles de familias afectadas por las inundaciones. 
+                Cada testimonio representa la urgente necesidad de ayuda humanitaria.
+              </p>
+              <div className="flex items-center justify-center space-x-6 text-sm text-white/80">
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
+                  <span>+19,000 familias afectadas</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>
+                  <span>+60 refugios ocupados</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
+                  <span>3 estados en emergencia</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Elementos decorativos */}
+        <div className="absolute top-10 left-5 w-20 h-20 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute bottom-10 right-5 w-24 h-24 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-xl animate-pulse"></div>
+      </section>
+
       {/* Estadísticas de la Emergencia */}
       <section 
         ref={statsRef} 
@@ -693,7 +835,7 @@ export default function EmergenciaInundacionesHome() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { number: 19000, label: "Familias Afectadas", suffix: "+" },
-              { number: 40, label: "Refugios Activos", suffix: "+" },
+              { number: 60, label: "Refugios Activos", suffix: "+" },
               { number: 3, label: "Estados en Emergencia", suffix: "" },
               // { number: 24, label: "Horas de Asistencia", suffix: "/7" }
             ].map((stat, index) => (
@@ -791,13 +933,13 @@ export default function EmergenciaInundacionesHome() {
                 color: "blue",
                 // action: "Donar Artículos"
               },
-              {
-                icon: <HandHeart className="w-12 h-12" />,
-                title: "Voluntariado",
-                description: "Únete como voluntario para ayudar en la distribución de ayudas y asistencia directa.",
-                color: "green",
-                action: "Ser Voluntario"
-              },
+              // {
+              //   icon: <HandHeart className="w-12 h-12" />,
+              //   title: "Voluntariado",
+              //   description: "Únete como voluntario para ayudar en la distribución de ayudas y asistencia directa.",
+              //   color: "green",
+              //   action: "Ser Voluntario"
+              // },
               {
                 icon: <TrendingUp className="w-12 h-12" />,
                 title: "Difunde la Información",
@@ -850,7 +992,7 @@ export default function EmergenciaInundacionesHome() {
                 </h3>
               </div>
               <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                La emergencia en Camaguán, Apure y Amazonas requiere acción inmediata. 
+                La emergencia en múltiples municipios de Guárico, Apure y Amazonas requiere acción inmediata. 
                 Miles de familias dependen de la solidaridad de personas como tú.
               </p>
               {/* <motion.button
@@ -939,7 +1081,7 @@ export default function EmergenciaInundacionesHome() {
                 </div>
                 <div>
                   <h3 className="text-white font-bold text-xl">Centro de Donaciones</h3>
-                  <p className="text-white/90 text-sm">Iglesia Central de Camaguán</p>
+                  <p className="text-white/90 text-sm">Sede de la Mision Venezolana De Los Llanos Centrales</p>
                 </div>
               </div>
               
@@ -951,7 +1093,7 @@ export default function EmergenciaInundacionesHome() {
               <div className="space-y-2">
                 <div className="flex items-center space-x-2">
                   <MapPin className="w-4 h-4 text-blue-400" />
-                  <span className="text-white/90 text-sm">Camaguán, Estado Apure</span>
+                  <span className="text-white/90 text-sm">Carrera 7 entre calle 5 y 6 - Calabozo, Estado Guárico</span>
                 </div>
                 {/* <div className="flex items-center space-x-2">
                   <Clock className="w-4 h-4 text-blue-400" />
@@ -959,7 +1101,24 @@ export default function EmergenciaInundacionesHome() {
                 </div> */}
                 <div className="flex items-center space-x-2">
                   <Phone className="w-4 h-4 text-blue-400" />
-                  <span className="text-white/90 text-sm">+58 (424) 311-2771</span>
+                  <span className="text-white/90 text-sm">+58 (414) 875-1003 (Mary Acosta - Tesorera)</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4 text-blue-400" />
+                  <span className="text-white/90 text-sm">+58 (424) 473-0708 (Pastor Freddy Pérez - Líder Juvenil)</span>
+                </div>
+                
+                {/* Botón de Google Maps */}
+                <div className="mt-4">
+                  <a 
+                    href="https://www.google.com/maps/place/8%C2%B055'56.3%22N+67%C2%B025'24.2%22W/@8.9321437,-67.4231805,19.28z/data=!4m4!3m3!8m2!3d8.9322974!4d-67.423398?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-2 bg-blue-500/80 hover:bg-blue-600/80 text-white px-4 py-2 rounded-lg transition-all duration-300 text-sm font-semibold backdrop-blur-sm border border-blue-400/30 hover:scale-105"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    <span>Ver en Google Maps</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -1054,13 +1213,13 @@ export default function EmergenciaInundacionesHome() {
                 whileTap={{ scale: 0.98 }}
                 className="w-full bg-white/20 hover:bg-white/30 p-4 rounded-lg text-left transition-colors duration-300 border border-white/30"
               >
-                <div className="flex items-center space-x-3">
+                {/* <div className="flex items-center space-x-3">
                   <Shield className="w-6 h-6 text-yellow-400" />
                   <div>
                     <p className="text-white font-semibold">Voluntariado</p>
                     <p className="text-white/80 text-sm">Únete a nuestro equipo</p>
                   </div>
-                </div>
+                </div> */}
               </motion.button>
               
               <motion.button
@@ -1109,7 +1268,7 @@ export default function EmergenciaInundacionesHome() {
                   <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                   <span className="text-white font-semibold text-sm">Entrega Directa</span>
                 </div>
-                <p className="text-white/80 text-xs">Las donaciones llegan directamente a las familias</p>
+                <p className="text-white/80 text-xs">Las donaciones llegaran a la sede para ser transladadas a las familias afectadas</p>
               </div>
               
               <div className="bg-white/10 rounded-lg p-3">
@@ -1155,11 +1314,12 @@ export default function EmergenciaInundacionesHome() {
             height={48}
             className="rounded-full"
           />
-          <h3 className="font-heading text-2xl text-white">MIVELLACEN</h3>
+          <h3 className="font-heading text-2xl text-white">MISION VENEZOLANA DE LOS LLANOS CENTRALES</h3>
         </div>
         <p className="text-white/90 mb-6 leading-relaxed">
           Misión Venezolana de los Llanos Centrales trabajando en la 
-          emergencia por inundaciones en Camaguán, Apure y Amazonas.
+          emergencia por inundaciones en Camaguán (Guárico), San Fernando de Apure (Apure), 
+          Puerto Ayacucho y San Fernando de Atabapo (Amazonas).
         </p>
         <div className="space-y-4">
           <div className="flex items-center space-x-4">
@@ -1174,16 +1334,16 @@ export default function EmergenciaInundacionesHome() {
           <div className="flex items-center space-x-4">
             <Phone className="w-6 h-6 text-blue-400" />
             <a 
-              href="tel:+584148751003" 
+              href="tel:+584123320417" 
               className="hover:text-blue-400 transition-colors"
             >
-              +58 (414) 875-1003
+              +58 (412) 332-0417
             </a>
           </div>
           <div className="flex items-center space-x-4">
             <MapPin className="w-6 h-6 text-blue-400" />
             <span className="text-white/90">
-              Camagüán, Estado Apure, Venezuela
+              Carrera 7 entre calle 5 y 6 - Calabozo, Estado Guárico
             </span>
           </div>
         </div>
@@ -1291,7 +1451,7 @@ export default function EmergenciaInundacionesHome() {
             <span className="font-bold text-blue-400 text-lg">EMERGENCIA ACTIVA</span>
           </div>
           <p className="text-white/90">
-            Más de 19,000 familias necesitan tu ayuda urgente en Camagüán, Apure y Amazonas
+            Más de 19,000 familias necesitan tu ayuda urgente en Guárico, Apure y Amazonas
           </p>
         </div>
         

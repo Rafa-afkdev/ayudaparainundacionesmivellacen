@@ -327,7 +327,7 @@ export default function DonationPage() {
               </div>
 
               {/* Nota de seguridad */}
-              <div className="mt-6 bg-green-500/20 border border-green-400 rounded-lg p-4">
+              {/* <div className="mt-6 bg-green-500/20 border border-green-400 rounded-lg p-4">
                 <div className="flex items-center space-x-2 mb-2">
                   <Shield className="w-5 h-5 text-green-400" />
                   <span className="text-green-400 font-semibold text-sm">Transferencia Segura</span>
@@ -336,7 +336,7 @@ export default function DonationPage() {
                   Todos los datos bancarios son oficiales y verificados. 
                   Tu donación llega directamente a las familias necesitadas.
                 </p>
-              </div>
+              </div> */}
 
               {/* Botón para subir comprobante */}
               <div className="mt-6">
